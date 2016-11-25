@@ -7,7 +7,7 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="dns-prefetch" href="http://yoursite.com">
-		<title>温钟伟-主页</title>
+		<title>如何阅读Android项目</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta property="og:type" content="website">
 		<meta property="og:title" content="温钟伟">
@@ -48,14 +48,12 @@
 								</li>
 
 								<li>
-									<a href="https://wenzhongwei.github.io/MyPersonalResume/">所有文章</a>
+									<a href="https://wenzhongwei.github.io/MyBlog/allarticles">所有文章</a>
 								</li>
 
 							</ul>
 						</nav>
 						<nav class="header-smart-menu">
-
-							<a class="js-smart-menu" data-idx="0" href="https://wenzhongwei.github.io/MyBlog/allarticles">所有文章</a>
 
 							<a class="js-smart-menu" data-idx="3" href="https://wenzhongwei.github.io/AboutMe/">关于我</a>
 
@@ -134,35 +132,57 @@
 							<header class="article-header">
 
 								<h1 itemprop="name">
-      <a class="article-title" href="https://wenzhongwei.github.io/MyBlog/">老骥伏枥，志在千里</a>
-    </h1>
+      								<a class="article-title" href="https://wenzhongwei.github.io/MyBlog/howtoreading">如何阅读Android的项目代码</a>
+    							</h1>
 
 							</header>
 
 							<div class="article-entry" itemprop="articleBody">
 
 								<p>
-									<h2>前言</h2></p>
-								天将降大任于是人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身，行拂乱其所为，所以动心忍性，曾益其所不能。
+									<h2>1–>首先注意到的是权限: </h2></p>
+								打开定位到文件 AndroidManifest.xml,这里大致可以了解到,项目会进行一些什么操作; 比如网络访问啊, 读写磁盘啊, 调用振动器啊, 等
 								<p>
-									<h2>博客主要内容</h2></p>
-								第一次搭建自己的博客，有点生疏，但是相信在经常使用的过程中会越来越熟练。。。
-								<p />博客的主要内容是用于记录平时的学习的一些经验和碰到的一些问题及解决方法，好记性不如烂键盘~记起来以后自己翻看也简单！
-								
+									<h2>2–>其次看到一个application标签 </h2></p>
+								这个标签就代表,整个android应用程序, 其下面包含很多个Activity(活动),就表示应用程序中,有很多个活动. 
+								<p>application标签,有且必须有一个; </p>
+								<p>可以看到 android:name=”.App”;这条属性,这说明程序自定义了application;(这很关键, 因为程序运行的时候,会首先调用这个类….所以我们有必要先查看一下究竟..看看这个类,都做了啥).</p>
+									<img src="img/a1/a1_p1.png" />
+									<p>很简单, 只是定义了一个全局的Context 对象; private static Context sContext; </p>
+									<p>但是…App是继承LitePalApplication类的, public class App extends LitePalApplication ; 所以我们还必须看一下LitePalApplication做了什么: </p>
+									<img src="img/a1/a1_p2.png" />
+									<p>这是一个库项目中的类, 我们无法查看. 没关系,这里我们只要知道,他使用到了库中的application就行了.</p>
+									继续回到 AndroidManifest.xml 文件: </br>
+									<img src="img/a1/a1_p3.png" /></p>
+									可以看到: 静态声明了5个Activity, 2个广播接收器receiver, 1个服务service 
+									其中.ui.SplashActivity 就是程序最主要的入口Activity: </p>
+									<img src="img/a1/a1_p4.png" />
+									
+									<p>因为他有2个过滤器:</p>
+									
+									以后,大家看到这2个过滤器,就要知道,这是程序的 主要Activity入口, 就是桌面上点击启动之后,看到的第一个界面.
+									
+									
+
 								<p>
-									<h2>写在最后</h2> </p>让我们荡起双桨，迎接每一天的挑战！
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus sunt obcaecati totam fuga cum alias nemo nam eligendi minus unde magnam beatae aut iure modi consequuntur harum recusandae officia architecto.
+									<h2>3–>程序主界面 </h2> </p><img src="img/a1/a1_p5.png" />
+								<p>进行了初始化操作, 访问网络操作, 最后跳转到了:MainActivity.class 类中;
+									显然,接下来要查看MainActivity.class类了:
 								</p>
+								<img src="img/a1/a1_p6.png" />
+								
+								<p>文章参考于： <a href="http://blog.csdn.net/angcyo/article/details/45889625">http://blog.csdn.net/angcyo/article/details/45889625</a></p>
+								
 							</div>
 
 							<div class="article-info article-info-index">
 								<div class="article-tag tagcloud">
 									<ul class="article-tag-list">
 										<li class="article-tag-list-item">
-											<a class="color4" style="font-size: 12px;">主要内容</a>
+											<a class="color4" style="font-size: 12px;">阅读</a>
 										</li>
 										<li class="article-tag-list-item">
-											<a class="color1" style="font-size: 12px;">经验</a>
+											<a class="color1" style="font-size: 12px;">项目</a>
 										</li>
 										<li class="article-tag-list-item">
 											<a class="color1" style="font-size: 12px;">记录</a>
