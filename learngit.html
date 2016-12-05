@@ -7,7 +7,7 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="dns-prefetch" href="http://yoursite.com">
-		<title>所有文章</title>
+		<title>Git的安装和使用</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta property="og:type" content="website">
 		<meta property="og:title" content="温钟伟">
@@ -50,8 +50,6 @@
 								<li>
 									<a href="https://wenzhongwei.github.io/MyBlog/allarticles">所有文章</a>
 								</li>
-								
-								
 
 							</ul>
 						</nav>
@@ -105,10 +103,6 @@
 										<a href="https://wenzhongwei.github.io/MyBlog/allarticles">所有文章</a>
 									</li>
 
-									<li>
-										<a href="https://wenzhongwei.github.io/AboutMe/">关于我</a>
-									</li>
-
 								</ul>
 							</nav>
 							<nav class="header-nav">
@@ -138,7 +132,7 @@
 							<header class="article-header">
 
 								<h1 itemprop="name">
-      								<a class="article-title" href="https://wenzhongwei.github.io/MyBlog/allarticles">所有文章</a>
+      								<a class="article-title" href="https://wenzhongwei.github.io/MyBlog/learngit">Git的安装和使用</a>
     							</h1>
 
 							</header>
@@ -146,27 +140,85 @@
 							<div class="article-entry" itemprop="articleBody">
 
 								<p>
-									<h2><a href="https://wenzhongwei.github.io/MyBlog/howtoreading">文章01---如何阅读Android项目代码</a></h2></p>
-
+									<h2>一、安装，自报家门：</h2></p>
+								安装后Git后，打开Git-Bash，输入
+								</br><img src="img/a3/a3_p1.png" /></br>
+								注意 git config 命令的 --global 参数，用了这个参数，表示你这台机器上所有的 Git 仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和 Email 地址。
+								
 								<p>
-									<h2><a href="https://wenzhongwei.github.io/MyBlog/mvp">文章02---MVC，MVP和MVVM之间的区别</a></h2></p>
+									<h2>二、创建版本库： </h2></p>
+								
+								<img src="img/a3/a3_p2.png" /></br>
+								
+								<p>
+									<h2>三、提交文件： </h2> 
+								<p>git add readme.txt    ---->将readme.txt文件添加到暂存区<br>
+									git commit  -m "描述"    ------>提交
+								</p>
+								<img src="img/a3/a3_p3.png" />
+								
+								<p>
+									<h2>四、时光穿梭机： </h2> 
+								<p>1、查看仓库状态：git status<br>
+								<img src="img/a3/a3_p4.png" /><br>表示修改了内容但是还没提交。</br>
+									2、查看修改了哪些内容(未提交的前提下)：  git  diff</br>
+									3、查看修改的历史记录：  git log</br>
+								</p>
+								<img src="img/a3/a3_p5.png" /></br>
+								4、返回上一个版本：  git reset --hard HEAD^（一个 ^ 代表一个版本，也可 HEAD~100）</br>
+								5、查看内容：cat readme.txt</br>
+								6、回到未来的某个版本： git reset --hard ID</br>
+								7、记录每一次命令： git reflog,可以查看每一次的ID</br>
+								8、 撤销修改(丢掉工作区的修改)：git checkout --readme.txt</br>
+								<img src="img/a3/a3_p6.png" /></br>
+								9、把暂存区的修改撤销掉：git reset HEAD readme.txt</br>
+								10、删除文件：git rm readme.txt ,再提交</br>
+								
+								<p>
+									<h2>五、远程仓库： </h2> 
+								
+								<img src="img/a3/a3_p7.png" /></br>
+								<img src="img/a3/a3_p8.png" /></br>
+								3、添加远程库：</br>
+								<img src="img/a3/a3_p9.png" /></br>
+								<img src="img/a3/a3_p10.png" /></br>
+								<img src="img/a3/a3_p11.png" /></br>
+								
+								<p>
+									<h2>六、从远程库克隆到本地 ：</h2>
+									git clone git@github.com:WenZhongWei/gitskills.git</br>
 									
 								<p>
-									<h2><a href="https://wenzhongwei.github.io/MyBlog/learngit">文章03---Git的安装和使用</a></h2></p>
-
+									<h2>七、分支：</h2>
+									1、创建分支：git branch dev</br>
+									2、切换到某个分支：git checkout dev</br>
+									3、以上可以合并为：git checkout -b dev</br>
+									4、查看现有的分支：git branch</br>
+									<img src="img/a3/a3_p12.png" /></br>
+									5、合并指定分支到当前分支：git merge dev</br>
+									6、删除分支：git branch -d dev</br>
+									7、查看分支的合并情况：git log --graph --pretty=oneline --abbrev-commit</br>
+									8、合并时禁用Fast forward：git merge --no-ff -m"merge with no-ff" dev</br>
+								
 							</div>
 
 							<div class="article-info article-info-index">
 								<div class="article-tag tagcloud">
 									<ul class="article-tag-list">
 										<li class="article-tag-list-item">
-											<a class="color4" style="font-size: 12px;">所有</a>
+											<a class="color4" style="font-size: 12px;">Git</a>
 										</li>
 										<li class="article-tag-list-item">
-											<a class="color1" style="font-size: 12px;">文章</a>
+											<a class="color1" style="font-size: 12px;">安装</a>
 										</li>
 										<li class="article-tag-list-item">
-											<a class="color1" style="font-size: 12px;">记录</a>
+											<a class="color1" style="font-size: 12px;">命令</a>
+										</li>
+										<li class="article-tag-list-item">
+											<a class="color1" style="font-size: 12px;">分支</a>
+										</li>
+										<li class="article-tag-list-item">
+											<a class="color1" style="font-size: 12px;">库</a>
 										</li>
 									</ul>
 								</div>
